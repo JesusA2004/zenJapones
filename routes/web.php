@@ -1,21 +1,16 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
-| Públicas
+| Públicas normales
 |--------------------------------------------------------------------------
 */
 
 Route::get('/', function () {
     return Inertia::render('Public/Home');
 })->name('home');
-
-Route::get('/menu', function () {
-    return Inertia::render('Public/Menu/Index');
-})->name('menu.index');
 
 Route::get('/sucursales', function () {
     return Inertia::render('Public/Branches/Index');
@@ -33,25 +28,39 @@ Route::get('/bolsa-de-trabajo', function () {
     return Inertia::render('Public/Jobs/Show');
 })->name('jobs.show');
 
-/*
-|--------------------------------------------------------------------------
-| Facturación
-|--------------------------------------------------------------------------
-| Si todavía no tienes vista, puedes redirigir o dejar temporal.
-*/
-
 Route::get('/facturacion', function () {
     return redirect('/');
 })->name('billing');
 
 /*
 |--------------------------------------------------------------------------
-| Panel admin
+| SOLO menú sin cache
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware('no-store')->group(function () {
+    Route::get('/menu', function () {
+        return Inertia::render('Public/Menu/Index');
+    })->name('menu.index');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Compatibilidad starter kit
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
+    return redirect('/admin');
+})->name('dashboard');
+
+/*
+|--------------------------------------------------------------------------
+| Admin
 |--------------------------------------------------------------------------
 */
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
-
     Route::get('/', function () {
         return Inertia::render('Admin/Dashboard');
     })->name('dashboard');
