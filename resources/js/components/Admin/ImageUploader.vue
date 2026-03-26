@@ -3,22 +3,34 @@ const emit = defineEmits<{
     (e: 'selected', file: File | null): void
 }>()
 
+defineProps<{
+    preview?: string | null
+    label?: string
+}>()
+
 function onChange(event: Event) {
     const target = event.target as HTMLInputElement
-    const file = target.files?.[0] ?? null
-    emit('selected', file)
+    emit('selected', target.files?.[0] ?? null)
 }
 </script>
 
 <template>
-    <div class="rounded-2xl border border-dashed border-neutral-700 bg-neutral-950 p-6">
-        <label class="block cursor-pointer">
-            <span class="mb-3 block text-sm font-medium text-white">Subir imagen</span>
-            <input type="file" accept="image/*" class="block w-full text-sm text-neutral-300" @change="onChange" />
-        </label>
+    <div class="space-y-3">
+        <label class="block text-sm font-medium text-white">{{ label || 'Imagen' }}</label>
 
-        <p class="mt-3 text-xs leading-6 text-neutral-500">
-            Recomendación: usar nombres únicos o versionados para evitar que se muestre una imagen vieja en caché.
-        </p>
+        <div class="overflow-hidden rounded-2xl border border-dashed border-white/15 bg-white/5">
+            <div v-if="preview" class="border-b border-white/10">
+                <img :src="preview" alt="Preview" class="h-48 w-full object-cover" />
+            </div>
+
+            <div class="p-4">
+                <input
+                    type="file"
+                    accept="image/*"
+                    class="block w-full rounded-xl border border-white/10 bg-black px-4 py-3 text-sm text-white file:mr-4 file:rounded-xl file:border-0 file:bg-amber-400 file:px-4 file:py-2 file:font-semibold file:text-black"
+                    @change="onChange"
+                />
+            </div>
+        </div>
     </div>
 </template>

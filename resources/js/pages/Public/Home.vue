@@ -36,7 +36,7 @@ defineProps<{
 </script>
 
 <template>
-    <Head title="Zen Japonés" />
+    <Head title="" />
 
     <HeroCarousel :slides="slides" />
 
