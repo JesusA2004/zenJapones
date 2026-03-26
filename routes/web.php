@@ -1,64 +1,27 @@
 <?php
+
+use App\Http\Controllers\PublicSiteController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Públicas normales
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/', function () {
-    return Inertia::render('Public/Home');
-})->name('home');
-
-Route::get('/sucursales', function () {
-    return Inertia::render('Public/Branches/Index');
-})->name('branches.index');
-
-Route::get('/eventos', function () {
-    return Inertia::render('Public/Events/Index');
-})->name('events.index');
-
-Route::get('/aviso-de-privacidad', function () {
-    return Inertia::render('Public/Privacy/Show');
-})->name('privacy.show');
-
-Route::get('/bolsa-de-trabajo', function () {
-    return Inertia::render('Public/Jobs/Show');
-})->name('jobs.show');
-
-Route::get('/facturacion', function () {
-    return redirect('/');
-})->name('billing');
-
-/*
-|--------------------------------------------------------------------------
-| SOLO menú sin cache
-|--------------------------------------------------------------------------
-*/
+Route::get('/', [PublicSiteController::class, 'home'])->name('home');
 
 Route::middleware('no-store')->group(function () {
-    Route::get('/menu', function () {
-        return Inertia::render('Public/Menu/Index');
-    })->name('menu.index');
+    Route::get('/menu', [PublicSiteController::class, 'menu'])->name('menu.index');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Compatibilidad starter kit
-|--------------------------------------------------------------------------
-*/
+Route::get('/sucursales', [PublicSiteController::class, 'branches'])->name('branches.index');
+Route::get('/eventos', [PublicSiteController::class, 'events'])->name('events.index');
+Route::get('/aviso-de-privacidad', [PublicSiteController::class, 'privacy'])->name('privacy.show');
+Route::get('/bolsa-de-trabajo', [PublicSiteController::class, 'jobs'])->name('jobs.show');
+
+Route::get('/facturacion', function () {
+    return redirect('https://factura-zugacloud.zugatech.com/?Cliente=ZEN');
+})->name('billing');
 
 Route::middleware(['auth', 'verified'])->get('/dashboard', function () {
     return redirect('/admin');
 })->name('dashboard');
-
-/*
-|--------------------------------------------------------------------------
-| Admin
-|--------------------------------------------------------------------------
-*/
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {

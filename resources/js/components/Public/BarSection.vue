@@ -1,42 +1,53 @@
 <script setup lang="ts">
-import SectionTitle from '@/components/Public/SectionTitle.vue'
+import { Link } from '@inertiajs/vue3'
+
+interface SectionData {
+    key: string
+    title: string
+    subtitle?: string | null
+    content?: string | null
+    image_path?: string | null
+    extra_json?: Record<string, unknown> | null
+}
+
+defineProps<{
+    section: SectionData
+}>()
 </script>
 
 <template>
-    <section class="border-b border-white/10 bg-neutral-950">
-        <div class="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:grid-cols-2 md:px-6">
-            <div>
-                <SectionTitle
-                    eyebrow="Bar"
-                    title="Coctelería, ambiente y una propuesta visual más sólida."
-                    description="La sección de bar puede mantenerse como parte del storytelling del sitio, reforzando la experiencia del restaurante."
+    <section class="relative border-b border-white/10 bg-black">
+        <img
+            src="/images/decor/bg-lines.webp"
+            alt="Líneas decorativas"
+            class="absolute left-0 top-0 h-full w-full object-cover opacity-10"
+        />
+
+        <div class="relative z-10 mx-auto grid min-h-[70vh] max-w-7xl items-center gap-10 px-4 py-20 md:grid-cols-[0.7fr_1.3fr] md:px-6">
+            <div class="order-2 flex justify-center md:order-1">
+                <img
+                    v-if="section.image_path"
+                    :src="section.image_path"
+                    :alt="section.title"
+                    class="max-h-[460px] w-full max-w-md object-contain"
                 />
             </div>
 
-            <div class="grid gap-4 md:grid-cols-2">
-                <div class="rounded-3xl border border-white/10 bg-black/40 p-6">
-                    <h3 class="text-lg font-semibold text-white">Imagen cuidada</h3>
-                    <p class="mt-3 text-sm leading-7 text-neutral-300">
-                        Fotografías grandes, contrastes sobrios y textos breves.
-                    </p>
-                </div>
-                <div class="rounded-3xl border border-white/10 bg-black/40 p-6">
-                    <h3 class="text-lg font-semibold text-white">Mejor jerarquía</h3>
-                    <p class="mt-3 text-sm leading-7 text-neutral-300">
-                        Secciones más claras, limpias y fáciles de recorrer.
-                    </p>
-                </div>
-                <div class="rounded-3xl border border-white/10 bg-black/40 p-6">
-                    <h3 class="text-lg font-semibold text-white">Responsive real</h3>
-                    <p class="mt-3 text-sm leading-7 text-neutral-300">
-                        Mejor uso en celular sin depender de una sola landing rígida.
-                    </p>
-                </div>
-                <div class="rounded-3xl border border-white/10 bg-black/40 p-6">
-                    <h3 class="text-lg font-semibold text-white">Escalable</h3>
-                    <p class="mt-3 text-sm leading-7 text-neutral-300">
-                        Lista para crecer con nuevas secciones, promos y eventos.
-                    </p>
+            <div class="order-1 text-right md:order-2">
+                <h2 class="text-4xl font-semibold tracking-[0.2em] text-white md:text-6xl">
+                    {{ section.title }}
+                </h2>
+                <p v-if="section.content" class="mt-6 ml-auto max-w-2xl text-base leading-8 text-white/90 md:text-lg">
+                    {{ section.content }}
+                </p>
+
+                <div class="mt-8">
+                    <Link
+                        :href="String(section.extra_json?.button_url || '/sucursales')"
+                        class="inline-flex rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-black transition hover:scale-[1.02]"
+                    >
+                        {{ String(section.extra_json?.button_text || 'Conócenos') }}
+                    </Link>
                 </div>
             </div>
         </div>

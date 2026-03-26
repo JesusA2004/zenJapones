@@ -1,34 +1,38 @@
 <script setup lang="ts">
-import SectionTitle from '@/components/Public/SectionTitle.vue'
+interface SectionData {
+    key: string
+    title: string
+    subtitle?: string | null
+    content?: string | null
+    image_path?: string | null
+}
+
+defineProps<{
+    section: SectionData
+}>()
 </script>
 
 <template>
-    <section class="border-b border-white/10 bg-neutral-950">
-        <div class="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:grid-cols-2 md:px-6">
-            <div class="flex items-center">
-                <SectionTitle
-                    eyebrow="Concepto"
-                    title="Una experiencia japonesa elegante, actual y memorable."
-                    description="Zen Japonés combina cocina, atmósfera y servicio en un entorno pensado para disfrutar cada visita con identidad propia."
-                />
-            </div>
+    <section class="relative flex min-h-[70vh] items-center overflow-hidden border-b border-white/10 bg-black">
+        <img
+            v-if="section.image_path"
+            :src="section.image_path"
+            :alt="section.title"
+            class="absolute inset-0 h-full w-full object-cover opacity-70"
+        />
+        <div class="absolute inset-0 bg-black/35"></div>
 
-            <div class="rounded-3xl border border-white/10 bg-neutral-900 p-8">
-                <p class="text-base leading-8 text-neutral-300">
-                    Nuestro enfoque está en cuidar cada detalle: ingredientes, presentación, ambiente y consistencia.
-                    El sitio web debe comunicar esa misma experiencia con una imagen sobria, atractiva y fácil de navegar.
+        <div class="relative z-10 mx-auto flex w-full max-w-7xl justify-end px-4 py-20 md:px-6">
+            <div class="max-w-3xl text-right">
+                <p v-if="section.subtitle" class="text-3xl font-semibold uppercase tracking-[0.2em] text-white md:text-5xl">
+                    {{ section.subtitle }}
                 </p>
-
-                <div class="mt-8 grid grid-cols-2 gap-4">
-                    <div class="rounded-2xl border border-white/10 bg-black/40 p-5">
-                        <p class="text-3xl font-bold text-amber-400">2</p>
-                        <p class="mt-2 text-sm text-neutral-300">Sucursales destacadas</p>
-                    </div>
-                    <div class="rounded-2xl border border-white/10 bg-black/40 p-5">
-                        <p class="text-3xl font-bold text-amber-400">100%</p>
-                        <p class="mt-2 text-sm text-neutral-300">Menú administrable</p>
-                    </div>
-                </div>
+                <h2 class="mt-1 text-5xl font-bold text-amber-400 md:text-7xl">
+                    {{ section.title }}
+                </h2>
+                <p v-if="section.content" class="mt-6 text-base leading-8 text-white/90 md:text-lg">
+                    {{ section.content }}
+                </p>
             </div>
         </div>
     </section>
