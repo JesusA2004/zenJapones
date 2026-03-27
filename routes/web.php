@@ -50,30 +50,30 @@ Route::middleware(['auth', 'verified'])
         Route::get('/hero-slides', [AdminController::class, 'heroSlides'])->name('hero-slides.index');
         Route::post('/hero-slides', [AdminController::class, 'storeHeroSlide'])->name('hero-slides.store');
         Route::post('/hero-slides/{heroSlide}', [AdminController::class, 'updateHeroSlide'])->name('hero-slides.update');
-        Route::delete('/hero-slides/{heroSlide}', [AdminController::class, 'destroyHeroSlide'])->name('hero-slides.destroy');
+        Route::delete('/hero-slides/{heroSlide}', [AdminController::class, 'deleteHeroSlide'])->name('hero-slides.destroy');
 
-        Route::get('/secciones', [AdminController::class, 'contentSections'])->name('content-sections.index');
-        Route::post('/secciones/{contentSection}', [AdminController::class, 'updateContentSection'])->name('content-sections.update');
+        Route::get('/secciones', [AdminController::class, 'sections'])->name('content-sections.index');
+        Route::post('/secciones/{contentSection}', [AdminController::class, 'updateSection'])->name('content-sections.update');
 
         Route::get('/sucursales', [AdminController::class, 'branches'])->name('branches.index');
         Route::post('/sucursales', [AdminController::class, 'storeBranch'])->name('branches.store');
         Route::post('/sucursales/{branch}', [AdminController::class, 'updateBranch'])->name('branches.update');
-        Route::delete('/sucursales/{branch}', [AdminController::class, 'destroyBranch'])->name('branches.destroy');
+        Route::delete('/sucursales/{branch}', [AdminController::class, 'deleteBranch'])->name('branches.destroy');
 
         Route::get('/categorias-menu', [AdminController::class, 'menuCategories'])->name('menu-categories.index');
         Route::post('/categorias-menu', [AdminController::class, 'storeMenuCategory'])->name('menu-categories.store');
         Route::post('/categorias-menu/{menuCategory}', [AdminController::class, 'updateMenuCategory'])->name('menu-categories.update');
-        Route::delete('/categorias-menu/{menuCategory}', [AdminController::class, 'destroyMenuCategory'])->name('menu-categories.destroy');
+        Route::delete('/categorias-menu/{menuCategory}', [AdminController::class, 'deleteMenuCategory'])->name('menu-categories.destroy');
 
         Route::get('/menu-items', [AdminController::class, 'menuItems'])->name('menu-items.index');
         Route::post('/menu-items', [AdminController::class, 'storeMenuItem'])->name('menu-items.store');
         Route::post('/menu-items/{menuItem}', [AdminController::class, 'updateMenuItem'])->name('menu-items.update');
-        Route::delete('/menu-items/{menuItem}', [AdminController::class, 'destroyMenuItem'])->name('menu-items.destroy');
+        Route::delete('/menu-items/{menuItem}', [AdminController::class, 'deleteMenuItem'])->name('menu-items.destroy');
 
         Route::get('/eventos', [AdminController::class, 'events'])->name('events.index');
         Route::post('/eventos', [AdminController::class, 'storeEvent'])->name('events.store');
         Route::post('/eventos/{event}', [AdminController::class, 'updateEvent'])->name('events.update');
-        Route::delete('/eventos/{event}', [AdminController::class, 'destroyEvent'])->name('events.destroy');
+        Route::delete('/eventos/{event}', [AdminController::class, 'deleteEvent'])->name('events.destroy');
 
         Route::get('/settings', [AdminController::class, 'settings'])->name('settings.index');
         Route::post('/settings', [AdminController::class, 'updateSettings'])->name('settings.update');

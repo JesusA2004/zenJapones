@@ -28,7 +28,7 @@ const mainNavItems: NavItem[] = [
     { title: 'Dashboard', href: '/admin', icon: LayoutGrid },
     { title: 'Ajustes', href: '/admin/settings', icon: Settings },
     { title: 'Hero Slides', href: '/admin/hero-slides', icon: Image },
-    { title: 'Secciones', href: '/admin/content-sections', icon: FileText },
+    { title: 'Secciones', href: '/admin/secciones', icon: FileText },
     { title: 'Sucursales', href: '/admin/sucursales', icon: MapPin },
     { title: 'Eventos', href: '/admin/eventos', icon: CalendarDays },
     { title: 'Categorías', href: '/admin/categorias-menu', icon: Tags },
