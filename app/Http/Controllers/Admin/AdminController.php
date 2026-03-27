@@ -127,7 +127,7 @@ class AdminController extends Controller {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string'],
-            'image' => ['required', 'image', 'max:5120'],
+            'image' => ['required', 'image', 'max:20480'],
             'cta_text' => ['nullable', 'string', 'max:100'],
             'cta_url' => ['nullable', 'string', 'max:255'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
@@ -152,7 +152,7 @@ class AdminController extends Controller {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'cta_text' => ['nullable', 'string', 'max:100'],
             'cta_url' => ['nullable', 'string', 'max:255'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
@@ -227,7 +227,7 @@ class AdminController extends Controller {
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'button_text' => ['nullable', 'string', 'max:100'],
             'button_url' => ['nullable', 'string', 'max:255'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
@@ -301,7 +301,7 @@ class AdminController extends Controller {
             'maps_url' => ['nullable', 'string', 'max:255'],
             'hours_text' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['nullable', 'boolean'],
         ]);
@@ -331,7 +331,7 @@ class AdminController extends Controller {
             'maps_url' => ['nullable', 'string', 'max:255'],
             'hours_text' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['nullable', 'boolean'],
         ]);
@@ -401,7 +401,7 @@ class AdminController extends Controller {
             'cta_url' => ['nullable', 'string', 'max:255'],
             'start_at' => ['nullable', 'date'],
             'end_at' => ['nullable', 'date'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_published' => ['nullable', 'boolean'],
         ]);
@@ -435,7 +435,7 @@ class AdminController extends Controller {
             'cta_url' => ['nullable', 'string', 'max:255'],
             'start_at' => ['nullable', 'date'],
             'end_at' => ['nullable', 'date'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_published' => ['nullable', 'boolean'],
         ]);
@@ -499,7 +499,7 @@ class AdminController extends Controller {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['nullable', 'boolean'],
         ]);
@@ -521,7 +521,7 @@ class AdminController extends Controller {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['nullable', 'boolean'],
         ]);
@@ -601,7 +601,7 @@ class AdminController extends Controller {
             'price' => ['required', 'numeric', 'min:0'],
             'promo_price' => ['nullable', 'numeric', 'min:0'],
             'sku' => ['nullable', 'string', 'max:100'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_featured' => ['nullable', 'boolean'],
             'is_available' => ['nullable', 'boolean'],
@@ -640,7 +640,7 @@ class AdminController extends Controller {
             'price' => ['required', 'numeric', 'min:0'],
             'promo_price' => ['nullable', 'numeric', 'min:0'],
             'sku' => ['nullable', 'string', 'max:100'],
-            'image' => ['nullable', 'image', 'max:5120'],
+            'image' => ['nullable', 'image', 'max:20480'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_featured' => ['nullable', 'boolean'],
             'is_available' => ['nullable', 'boolean'],

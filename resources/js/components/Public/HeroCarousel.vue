@@ -7,32 +7,33 @@ interface Slide {
     ctaHref?: string | null
 }
 
-defineProps<{
+const props = defineProps<{
     slides: Slide[]
 }>()
 </script>
 
 <template>
-    <section class="relative overflow-hidden border-b border-white/10 bg-black">
-        <div class="relative min-h-[78vh]">
-            <div class="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
-                <div v-for="(slide, index) in slides" :key="index" class="relative">
-                    <img
-                        v-if="slide.image"
-                        :src="slide.image"
-                        :alt="slide.title || `Slide ${index + 1}`"
-                        class="h-full w-full object-cover opacity-90"
-                    />
-                    <div class="absolute inset-0 bg-black/25"></div>
-                </div>
-            </div>
-
-            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
-
-            <div class="relative mx-auto flex min-h-[78vh] max-w-7xl items-end justify-center px-4 pb-16 md:px-6">
-                <h1 class="text-center text-5xl font-bold tracking-[0.14em] text-white md:text-8xl">
+    <section class="relative w-full overflow-hidden bg-black">
+        <div class="relative h-screen min-h-[900px] w-full overflow-hidden bg-black">
+            <div class="absolute inset-0 z-10 flex items-center justify-center px-4">
+                <h1
+                    class="pointer-events-none text-center uppercase leading-[0.88] tracking-[0.01em] text-white text-[clamp(5rem,15vw,14rem)]"
+                    style="font-family: 'Japanese3017', sans-serif !important;"
+                >
                     ZEN JAPONES
                 </h1>
+            </div>
+
+            <div
+                v-if="props.slides?.length && props.slides[0]?.image"
+                class="pointer-events-none absolute inset-0 z-20 overflow-hidden"
+            >
+                <img
+                    :src="props.slides[0].image || ''"
+                    :alt="props.slides[0].title || 'Hero principal'"
+                    class="absolute left-1/2 top-1/2 block h-full w-full max-w-none -translate-x-1/2 -translate-y-1/2 scale-[1.15] object-cover select-none"
+                    style="filter: drop-shadow(0 20px 40px rgba(0,0,0,.35));"
+                />
             </div>
         </div>
     </section>

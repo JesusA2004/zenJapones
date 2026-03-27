@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import Navbar from '@/components/Public/Navbar.vue'
-import Footer from '@/components/Public/Footer.vue'
+import PublicNavbar from '@/components/Public/PublicNavbar.vue'
 </script>
 
 <template>
-    <div class="min-h-screen bg-black text-white">
-        <Navbar />
-
-        <main>
+    <div class="min-h-screen w-full overflow-x-hidden bg-black text-white">
+        <PublicNavbar />
+        <main class="w-full overflow-x-hidden">
             <slot />
         </main>
-
-        <Footer />
     </div>
 </template>

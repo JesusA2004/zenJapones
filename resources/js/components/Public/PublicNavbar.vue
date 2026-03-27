@@ -2,20 +2,19 @@
 import { Link, usePage } from '@inertiajs/vue3'
 
 const page = usePage()
-
 const isActive = (href: string) => page.url === href
 </script>
 
 <template>
-    <header class="fixed inset-x-0 top-0 z-50 w-full overflow-x-clip bg-black">
+    <header class="absolute inset-x-0 top-0 z-50 bg-transparent">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
             <Link href="/" class="text-lg font-semibold tracking-[0.18em] text-white md:hidden">
                 ZEN JAPONÉS
             </Link>
 
             <div class="hidden flex-1 items-center justify-center md:flex">
-                <div class="flex w-full items-center justify-between overflow-hidden">
-                    <div class="flex items-center gap-10 min-w-0">
+                <div class="flex w-full items-center justify-between">
+                    <div class="flex items-center gap-10">
                         <Link
                             href="/"
                             class="text-sm font-medium transition whitespace-nowrap"
@@ -33,22 +32,20 @@ const isActive = (href: string) => page.url === href
                         </Link>
                     </div>
 
-                    <Link href="/" class="mx-8 flex items-center justify-center shrink-0">
+                    <Link href="/" class="mx-8 flex shrink-0 items-center justify-center">
                         <div class="flex flex-col items-center">
-                            <div class="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-amber-400 font-bold text-black">
-                                <img
-                                    src="/favicon.png"
-                                    alt="Zen Japonés"
-                                    class="h-6 w-6 object-contain"
-                                />
-                            </div>
-                            <span class="text-xl font-semibold tracking-[0.18em] text-white whitespace-nowrap">
-                                ZEN JAPONÉS
+                            <img
+                                src="/favicon.png"
+                                alt="Zen Japonés"
+                                class="h-15 w-15 object-contain"
+                            />
+                            <span class="text-xl font-semibold tracking-[0.18em] text-white whitespace-nowrap" style="font-family: 'Japanese3017', sans-serif !important;">
+                                ZEN JAPONES
                             </span>
                         </div>
                     </Link>
 
-                    <div class="flex items-center gap-10 min-w-0">
+                    <div class="flex items-center gap-10">
                         <Link
                             href="/menu"
                             class="text-sm font-medium transition whitespace-nowrap"
@@ -69,7 +66,7 @@ const isActive = (href: string) => page.url === href
                             href="https://factura-zugacloud.zugatech.com/?Cliente=ZEN"
                             target="_blank"
                             rel="noopener"
-                            class="text-sm font-medium text-white transition hover:text-amber-400 whitespace-nowrap"
+                            class="text-sm font-medium text-white transition whitespace-nowrap hover:text-amber-400"
                         >
                             Facturación
                         </a>
