@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
-import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
 import NavUser from '@/components/NavUser.vue';
 import {
@@ -14,38 +11,46 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+import { Link } from '@inertiajs/vue3';
+import {
+    CalendarDays,
+    FileText,
+    Image,
+    LayoutGrid,
+    MapPin,
+    Settings,
+    Soup,
+    Tags,
+} from 'lucide-vue-next';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-];
-
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/vue-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
-    },
+    { title: 'Dashboard', href: '/admin', icon: LayoutGrid },
+    { title: 'Ajustes', href: '/admin/settings', icon: Settings },
+    { title: 'Hero Slides', href: '/admin/hero-slides', icon: Image },
+    { title: 'Secciones', href: '/admin/content-sections', icon: FileText },
+    { title: 'Sucursales', href: '/admin/sucursales', icon: MapPin },
+    { title: 'Eventos', href: '/admin/eventos', icon: CalendarDays },
+    { title: 'Categorías', href: '/admin/categorias-menu', icon: Tags },
+    { title: 'Platillos', href: '/admin/menu-items', icon: Soup },
 ];
 </script>
 
 <template>
-    <Sidebar collapsible="icon" variant="inset">
-        <SidebarHeader>
+    <Sidebar
+        collapsible="icon"
+        variant="sidebar"
+        class="border-r border-white/5 bg-zinc-950 text-zinc-100"
+    >
+        <SidebarHeader class="border-b border-white/5 bg-zinc-950">
             <SidebarMenu>
                 <SidebarMenuItem>
-                    <SidebarMenuButton size="lg" as-child>
-                        <Link :href="dashboard()">
+                    <SidebarMenuButton
+                        size="lg"
+                        as-child
+                        class="text-zinc-100 hover:bg-zinc-900 hover:text-white"
+                    >
+                        <Link href="/admin">
                             <AppLogo />
                         </Link>
                     </SidebarMenuButton>
@@ -53,14 +58,14 @@ const footerNavItems: NavItem[] = [
             </SidebarMenu>
         </SidebarHeader>
 
-        <SidebarContent>
+        <SidebarContent class="bg-zinc-950">
             <NavMain :items="mainNavItems" />
         </SidebarContent>
 
-        <SidebarFooter>
-            <NavFooter :items="footerNavItems" />
+        <SidebarFooter class="border-t border-white/5 bg-zinc-950">
             <NavUser />
         </SidebarFooter>
     </Sidebar>
+
     <slot />
 </template>
